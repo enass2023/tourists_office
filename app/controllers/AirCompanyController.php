@@ -12,7 +12,7 @@ class AirCompanyController {
     }
    public function index()
    {
-$a=this->AirCompanyModel->getCompany();
+$a=$this->model->getCompanys();
 
 print_r($a);
 
