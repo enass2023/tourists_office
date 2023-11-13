@@ -7,7 +7,7 @@ class AirCompanyModel{
         $this->db = $db;
     }
 
-    public function getCompany() {
+    public function getCompanys() {
         return $this->db->get('aircompanys');
     }
 

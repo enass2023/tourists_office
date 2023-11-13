@@ -7,10 +7,12 @@ class JourneyModel{
         $this->db = $db;
     }
 
-    public function getJourney() {
+    public function getJourneys() {
         return $this->db->get('journeys');
     }
-
+    public function getJourneysByCompanyId($id){
+        return $this->db->where("id",$id)->get("journeys");
+    }
     public function addJourney($data) {
         return $this->db->insert('journeys', $data);
     }

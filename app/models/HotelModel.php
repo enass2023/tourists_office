@@ -10,20 +10,20 @@ class HotelsModel {
         return $this->db->get('hotels');
     }
 
-    public function addHotels($data) {
+    public function addHotel($data) {
         return $this->db->insert('hotels', $data);
     }
 
-    public function getUserById($id) {
-        return $this->db->where('id', $id)->getOne('users');
+    public function getHotelsByCityId($id) {
+        return $this->db->where('city_id', $id)->get('hotels');
     }
 
-    public function updateHotels($id, $data) {
+    public function updateHotel($id, $data) {
         $this->db->where('id', $id);
         return $this->db->update('hotels', $data);
     }
 
-    public function deleteUser($id) {
+    public function deleteHotel($id) {
         $this->db->where('id', $id);
         return $this->db->delete('hotels');
     }
