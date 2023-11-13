@@ -8,17 +8,17 @@ class CityModel{
     }
 
     public function getCity() {
-        return $this->db->get('city');
+        return $this->db->get('citys');
     }
 
     public function addCity($data) {
-        return $this->db->insert('city', $data);
+        return $this->db->insert('citys', $data);
     }
 
 
     public function deleteCity($id) {
         $this->db->where('id', $id);
-        return $this->db->delete('city');
+        return $this->db->delete('citys');
     }
 
 }
