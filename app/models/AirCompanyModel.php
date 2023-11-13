@@ -8,22 +8,22 @@ class AirCompanyModel{
     }
 
     public function getCompany() {
-        return $this->db->get('aircompany');
+        return $this->db->get('aircompanys');
     }
 
     public function addCompany($data) {
-        return $this->db->insert('aircompany', $data);
+        return $this->db->insert('aircompanys', $data);
     }
 
 
     public function updatCompany($id, $data) {
         $this->db->where('id', $id);
-        return $this->db->update('aircompany', $data);
+        return $this->db->update('aircompanys', $data);
     }
 
     public function deletCompany($id) {
         $this->db->where('id', $id);
-        return $this->db->delete('aircompany');
+        return $this->db->delete('aircompanys');
     }
    
 
