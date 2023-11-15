@@ -1,4 +1,5 @@
 <?php
+namespace app\controllers;
 class RatingController{
     private $model;
     public function __construct($model){

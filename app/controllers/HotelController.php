@@ -1,5 +1,5 @@
 <?php
-
+namespace app\controllers;
 class HotelController{
     private $model;
     public function __construct($model){
