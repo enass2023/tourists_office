@@ -1,12 +1,12 @@
 <?php
-class HotelsModel {
+class HotelModel{
     private $db;
 
     public function __construct($db) {
         $this->db = $db;
     }
 
-    public function getHotels() {
+    public function getHotel() {
         return $this->db->get('hotels');
     }
 
@@ -14,7 +14,7 @@ class HotelsModel {
         return $this->db->insert('hotels', $data);
     }
 
-    public function getHotelsByCityId($id) {
+    public function getHotelByCityId($id) {
         return $this->db->where('city_id', $id)->get('hotels');
     }
 
