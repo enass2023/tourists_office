@@ -2,8 +2,8 @@
 namespace app\controllers;
 class RatingController{
     private $model;
-    public function __construct($model){
-        $this->model = $model;
+    public function __construct($db){
+        $this->model = new app\models\RatingModel($db);
     }
     public function addRate(){
         if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -48,7 +48,7 @@ class RatingController{
         else
          echo "No Data To Works On";
     }
-    public function getMaxRatedHotel(){
+    public function getMaxRatedHotels(){
         $mar = $this->model->getAvgRates("Desc");
         $ar = [];
         $mx = $mar[0]["rate"];
@@ -59,7 +59,7 @@ class RatingController{
             break;
         echo json_encode($ar);
     }
-    public function getMinRatedHotel(){
+    public function getMinRatedHotels(){
         $mnrs = $this->model->getAvgRates("asc");
         $ar = [];
         $mn = $mnrs[0]["rate"];

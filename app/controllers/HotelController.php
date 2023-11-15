@@ -2,8 +2,8 @@
 namespace app\controllers;
 class HotelController{
     private $model;
-    public function __construct($model){
-        $this->model = $model;
+    public function __construct($db){
+        $this->model = new app\models\HotelModel($db);
     }
     public function addHotel(){
         if($_SERVER["REQUEST_METHOD"] == "POST"){

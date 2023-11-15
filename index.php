@@ -11,10 +11,8 @@ $db = new MysqliDb(
     $config['db_name']
 );
 
-$model = new app\models\HotelModel($db);
-$hotel_controller = new app\controllers\HotelController($model);
-$model = new app\models\RatingModel($db);
-$rating_controller = new app\controllers\RatingController($model);
+$hotel_controller = new app\controllers\HotelController($db);
+$rating_controller = new app\controllers\RatingController($db);
 
 
 switch($_SERVER["REQUEST_URI"]){
