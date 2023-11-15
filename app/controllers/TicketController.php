@@ -1,8 +1,5 @@
 <?php
-
-require __DIR__.'/../models/TicketModel.php';
-require __DIR__.'/../models/CityModel.php';
-require __DIR__.'/../models/CompanyModel.php';
+namespace app\controllers;
 trait qqq{
 
 public function sow($t){
@@ -32,9 +29,9 @@ class TicketController{
   
     public function __construct($db) {
       
-        $this->model = new TicketModel($db);
-        $this->city=new CityModel($db);
-        $this->Company=new CompanyModel($db);
+        $this->model = new app\models\TicketModel($db);
+        $this->city=new app\models\CityModel($db);
+        $this->Company=new app\models\CompanyModel($db);
 
     }
 

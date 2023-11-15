@@ -13,7 +13,7 @@ $db = new MysqliDb(
 
 $hotel_controller = new app\controllers\HotelController($db);
 $rating_controller = new app\controllers\RatingController($db);
-
+$ticket_controller = new app\controllers\TicketController($db);
 
 switch($_SERVER["REQUEST_URI"]){
     case "/addhot":

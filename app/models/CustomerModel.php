@@ -1,5 +1,5 @@
 <?php
-namespace app\CustomerModel ;
+namespace app\models ;
 
 class CustomerModel{
     private $db;
