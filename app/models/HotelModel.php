@@ -1,30 +1,23 @@
 <?php
-class HotelsModel {
+class HotelModel {
     private $db;
 
     public function __construct($db) {
         $this->db = $db;
     }
-
-    public function getHotels() {
-        return $this->db->get('hotels');
+    public function addHotel($data){
+        return $this->db->insert($data);
     }
-
-    public function addHotel($data) {
-        return $this->db->insert('hotels', $data);
+    public function deleteHotel($id){
+        return $this->db->where("id",$id)->delete("hotels");
     }
-
-    public function getHotelsByCityId($id) {
-        return $this->db->where('city_id', $id)->get('hotels');
+    public function getAllHotels(){
+        return $this->db->get("hotels");
     }
-
-    public function updateHotel($id, $data) {
-        $this->db->where('id', $id);
-        return $this->db->update('hotels', $data);
+    public function getAllHotelsInCity($city_id){
+        return $this->db->where("city_id",$city_id)->get("hotels");
     }
-
-    public function deleteHotel($id) {
-        $this->db->where('id', $id);
-        return $this->db->delete('hotels');
+    public function getHotelById($id){
+        return $this->db->where("id",$id)->getOne("hotels");
     }
 }
