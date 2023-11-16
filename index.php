@@ -47,10 +47,10 @@ switch($_SERVER["REQUEST_URI"]){
         $rating_controller->getCustomerRatingsOrdered();
         break;
     case "/mxrathot":
-        $rating_controller->getMaxRatedHotel();
+        $rating_controller->getMaxRatedHotels();
         break;
     case "/mnrathot": 
-        $rating_controller->getMinRatedHotel();
+        $rating_controller->getMinRatedHotels();
         break;
 }
 
