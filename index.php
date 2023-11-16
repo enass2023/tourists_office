@@ -16,28 +16,44 @@ $model = new app\models\RatingModel($db);
 $rating_controller = new app\controllers\RatingController($model);
 //$ticket_controller = new app\controllers\TicketController($db);
 
+//add switch
 switch($_SERVER["REQUEST_URI"]){
     case "/addhot":
         $hotel_controller->addHotel();
         break;
+    //-----------done from hotels table add--------//
+    case "/addrat":
+        $rating_controller->addRate();
+        break;
+    //-----------done from ratings table select-------//
+}
+//delete switch
+switch($_SERVER["REQUEST_URI"]){
     case "/deletehot":
         $hotel_controller->deleteHotel();
         break;
+    //---------done from hotels tabel delete-------//
+    case "/deleterat":
+        $rating_controller->deleteRate();
+        break;
+    //---------done from ratings table delete------//
+}
+//update switch
+switch($_SERVER["REQUEST_URI"]){
+    case "/updaterat":
+        $rating_controller->updateRate();
+        break;
+    //--------done frome ratings tabel update-----------//
+}
+//get switch
+switch($_SERVER["REQUEST_URI"]){
     case "/seeallhot":
         $hotel_controller->getAllHotels();
         break;
     case "/seecithot": 
         $hotel_controller->getAllHotelsInCity();
         break;
-    case "/addrat":
-        $rating_controller->addRate();
-        break;
-    case "/deleterat":
-        $rating_controller->deleteRate();
-        break;
-    case "/updaterat":
-        $rating_controller->updateRate();
-        break;
+    //-------------------done from hotels tabel select-------------------//
     case "/seeallrat":
         $rating_controller->getAllRatings();
         break;
@@ -53,6 +69,7 @@ switch($_SERVER["REQUEST_URI"]){
     case "/mnrathot": 
         $rating_controller->getMinRatedHotels();
         break;
+    //----------------------done from ratings tabel select----------------------//
 }
 
 

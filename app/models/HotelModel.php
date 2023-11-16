@@ -7,7 +7,7 @@ class HotelModel {
         $this->db = $db;
     }
     public function addHotel($data){
-        return $this->db->insert($data);
+        return $this->db->insert("hotels",$data);
     }
     public function deleteHotel($id){
         return $this->db->where("id",$id)->delete("hotels");

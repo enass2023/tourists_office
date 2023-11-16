@@ -16,7 +16,7 @@ class RatingModel{
         return $this->db->where("id",$id)->update("ratings",$data);
     }
     public function getAllRatings(){
-        return $this->get("ratings");
+        return $this->db->get("ratings");
     }
     public function getHotelsRatingsOrdered($orderway){//asc or Desc
         return $this->db->orderBy("rate",$orderway)->get("ratings",null,["hotel_id","rate","comment"]);
@@ -25,7 +25,7 @@ class RatingModel{
         return $this->db->orderBy("rate",$orderway)->where("customer_id",$customer_id)->get("ratings");
     }
     public function getAvgRates($orderway){
-        return $this->db->groupBy("hotel_id")->orderBy("AVG(rate)",$orderway)->get("ratings",null,["hotel_id","AVG(rate)"]);
+        return $this->db->groupBy("hotel_id")->orderBy("rate",$orderway)->get("ratings",null,["hotel_id","AVG(rate) as rate"]);
     }
 }
 
