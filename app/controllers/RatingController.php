@@ -2,8 +2,8 @@
 namespace app\controllers;
 class RatingController{
     private $model;
-    public function __construct($db){
-        $this->model = new app\models\RatingModel($db);
+    public function __construct($model){
+        $this->model = $model;
     }
     public function addRate(){
         if($_SERVER["REQUEST_METHOD"] == "POST"){

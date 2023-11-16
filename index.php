@@ -10,10 +10,11 @@ $db = new MysqliDb(
     $config['db_pass'],
     $config['db_name']
 );
-
-$hotel_controller = new app\controllers\HotelController($db);
-$rating_controller = new app\controllers\RatingController($db);
-$ticket_controller = new app\controllers\TicketController($db);
+$model = new app\models\HotelModel($db);
+$hotel_controller = new app\controllers\HotelController($model);
+$model = new app\models\RatingModel($db);
+$rating_controller = new app\controllers\RatingController($model);
+//$ticket_controller = new app\controllers\TicketController($db);
 
 switch($_SERVER["REQUEST_URI"]){
     case "/addhot":
