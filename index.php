@@ -14,9 +14,13 @@ $hotel_model = new app\models\HotelModel($db);
 $rating_model = new app\models\RatingModel($db);
 $city_model = new app\models\CityModel($db);
 $customer_model = new app\models\CustomerModel($db);
+$admain_model= new app\models\AdminModel($db);
+$city_model= new app\models\CityModel($db);
 //----------------------end of models-------------------------------//
 $hotel_controller = new app\controllers\HotelController($hotel_model,$city_model);
 $rating_controller = new app\controllers\RatingController($rating_model,$hotel_model,$customer_model);
+$admain_controller= new app\controllers\AdmainController($model);
+$city_controller=new app\controllers\CityController($model);
 //---------------------end of controllers--------------------------//
 
 //add switch
@@ -74,6 +78,43 @@ switch($_SERVER["REQUEST_URI"]){
         break;
     //----------------------done from ratings tabel select----------------------//
 }
+switch($_SERVER["REQUEST_URI"]){
+    case "/allcity":
+        $city_controller->getAllCity();
+        break;
+        case "/addcity":
+            $city_controller->addcity();
+            break;
+            case "/deletecity":
+                $city_controller->deletecity();
+                break;
+                case "/search":
+                    $controller->searchCity($_POST['search']);
+    break;
+
+}
+// -------done from citys tabel --------//
+switch($_SERVER["REQUEST_URI"]){
+  
+        case "/addadmain":
+            $admain_controller->addAdmain();
+            break;
+            case "/updateAdmain":
+                $admain_controller->updateAdmain();
+                break;
+                case "/deleteAdmain":
+                    $admain_controller->deleteAdmain();
+                    break;
+                    case "/editAdmain":
+                        $admain_controller->editAdmain($_GET['id']);
+                        break;
+                        
+}
+
+// -------------done from amain table----------//
+
+
+
 
 
 ?>

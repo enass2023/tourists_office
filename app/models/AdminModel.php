@@ -16,7 +16,7 @@ class AdminModel{
         return $this->db->insert('admins', $data);
     }
 
-    public function getAdminById() {
+    public function getById() {
         return $this->db->where('id', $id)->getOne('admins');
     }
 
