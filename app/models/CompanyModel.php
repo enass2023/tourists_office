@@ -15,7 +15,7 @@ class CompanyModel {
         return $this->db->insert('companys', $data);
     }
 
-    public function getCompanyById($id) {
+    public function getById($id) {
         return $this->db->where('id', $id)->getOne('companys');
     }
 

@@ -36,4 +36,4 @@ class HotelController{
         else
         echo "No Data To Get On";
     }
-}
+}?>
