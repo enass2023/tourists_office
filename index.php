@@ -14,6 +14,8 @@ $model = new app\models\HotelModel($db);
 $hotel_controller = new app\controllers\HotelController($model);
 $model = new app\models\RatingModel($db);
 $rating_controller = new app\controllers\RatingController($model);
+$admain_controller= new app\controllers\AdmainController($model);
+$city_controller=new app\controllers\CityController($model);
 //$ticket_controller = new app\controllers\TicketController($db);
 
 //add switch
@@ -70,7 +72,42 @@ switch($_SERVER["REQUEST_URI"]){
         $rating_controller->getMinRatedHotels();
         break;
     //----------------------done from ratings tabel select----------------------//
-}
+    switch($_SERVER["REQUEST_URI"]){
+        case "/allcity":
+            $city_controller->getAllCity();
+            break;
+            case "/addcity":
+                $city_controller->addcity();
+                break;
+                case "/deletecity":
+                    $city_controller->deletecity();
+                    break;
+                    case "/search":
+                        $controller->searchCity($_POST['search']);
+        break;
+
+    }
+    // -------done from citys tabel --------//
+    switch($_SERVER["REQUEST_URI"]){
+      
+            case "/addadmain":
+                $admain_controller->addAdmain();
+                break;
+                case "/updateAdmain":
+                    $admain_controller->updateAdmain();
+                    break;
+                    case "/deleteAdmain":
+                        $admain_controller->deleteAdmain();
+                        break;
+                        case "/editAdmain":
+                            $admain_controller->editAdmain($_GET['id']);
+                            break;
+                            
+    }
+    
+    // -------------done from amain table----------//
+
+
 
 
 ?>

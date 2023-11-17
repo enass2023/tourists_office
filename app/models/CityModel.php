@@ -20,5 +20,10 @@ class CityModel{
         $this->db->where('id', $id);
         return $this->db->delete('citys');
     }
+    public function searchCity($search) {
+        $this->db->where('name', $searchTerm, 'LIKE');
+        return $this->db->get('citys');
+    }
+
 
 }
