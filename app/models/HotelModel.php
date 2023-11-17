@@ -18,7 +18,7 @@ class HotelModel {
     public function getAllHotelsInCity($city_id){
         return $this->db->where("city_id",$city_id)->get("hotels");
     }
-    public function getHotelById($id){
+    public function getById($id){
         return $this->db->where("id",$id)->getOne("hotels");
     }
 }

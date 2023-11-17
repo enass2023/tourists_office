@@ -7,7 +7,7 @@ class CityModel{
         $this->db = $db;
     }
 
-    public function getCityById($id) {
+    public function getById($id) {
         return $this->db->where('id', $id)->getOne('citys');
     }
 

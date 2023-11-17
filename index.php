@@ -10,11 +10,14 @@ $db = new MysqliDb(
     $config['db_pass'],
     $config['db_name']
 );
-$model = new app\models\HotelModel($db);
-$hotel_controller = new app\controllers\HotelController($model);
-$model = new app\models\RatingModel($db);
-$rating_controller = new app\controllers\RatingController($model);
-//$ticket_controller = new app\controllers\TicketController($db);
+$hotel_model = new app\models\HotelModel($db);
+$rating_model = new app\models\RatingModel($db);
+$city_model = new app\models\CityModel($db);
+$customer_model = new app\models\CustomerModel($db);
+//----------------------end of models-------------------------------//
+$hotel_controller = new app\controllers\HotelController($hotel_model,$city_model);
+$rating_controller = new app\controllers\RatingController($rating_model,$hotel_model,$customer_model);
+//---------------------end of controllers--------------------------//
 
 //add switch
 switch($_SERVER["REQUEST_URI"]){

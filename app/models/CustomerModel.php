@@ -26,7 +26,7 @@ class CustomerModel{
         return $this->db->delete('customers');
     }    
 
-    public function get_coustomer_ById($id) {
+    public function getById($id) {
         return $this->db->where('id', $id)->getOne('customers');
     }
 }
