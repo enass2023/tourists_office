@@ -7,10 +7,10 @@ class CityModel{
         $this->db = $db;
     }
 
-    public function getById($id) {
-        return $this->db->where('id', $id)->getOne('citys');
+    public function getcity() {
+        return $this->db->get("citys");
     }
-
+   
     public function addCity($data) {
         return $this->db->insert('citys', $data);
     }

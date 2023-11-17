@@ -17,10 +17,14 @@ $customer_model = new app\models\CustomerModel($db);
 $ticket_model = new app\models\TicketModel($db);
 $city_model=new app\models\CityModel($db);
 $company_model=new app\models\CompanyModel($db);
+$admin_model=new app\models\AdminModel($db);
+$city_model=new app\models\CityModel($db);
 //----------------------end of models-------------------------------//
 $hotel_controller = new app\controllers\HotelController($hotel_model,$city_model);
 $rating_controller = new app\controllers\RatingController($rating_model,$hotel_model,$customer_model);
 $ticket_controller = new app\controllers\TicketController($ticket_model,$city_model,$company_model);
+$admin_controller=new app\controllers\AdmainController($admin_model);
+$city_controller=new  app\controllers\CityController($city_model);
 //---------------------end of controllers--------------------------//
 
 
@@ -87,8 +91,32 @@ switch($_SERVER["REQUEST_URI"]){
         case "/ctick":
         $ticket_controller->getTicketByCityId();
         break;
+//----------------------done from ticket tabel select----------------------//
+    case "/ddmi";
+ $admin_controller->addAdmain();
+   break;
+  case "/dedmi";
+$admin_controller->deleteAdmin();
+  break;
+   case"/updmi";
+$admin_controller->updateAdmain();
+break;
+case"/gdmi";
+$admin_controller->gitAllAdmain();
+break;
+//----------------------done from admin tabel select----------------------//
+case"/gcit";
+$city_controller->gitAllCity();
+break;
+case"/dcit";
+$city_controller->deleteCity();
+break;
+case"/scit";
+$city_controller->searchCity();
+break;
+
+//----------------------done from city tabel select----------------------//
+
 
 }
-
-
 ?>

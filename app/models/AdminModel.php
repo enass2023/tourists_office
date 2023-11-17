@@ -12,20 +12,17 @@ class AdminModel{
         return $this->db->get('admins');
     }
 
-    public function addAdmins() {
+    public function addAdmins($data) {
         return $this->db->insert('admins', $data);
     }
 
-    public function getAdminById() {
-        return $this->db->where('id', $id)->getOne('admins');
-    }
 
-    public function updateAdmins() {
+    public function updateAdmins($id,$data) {
         $this->db->where('id', $id);
         return $this->db->update('admins', $data);
     }
 
-    public function deleteAdmins() {
+    public function deleteAdmins($id) {
         $this->db->where('id', $id);
         return $this->db->delete('admins');
     }
