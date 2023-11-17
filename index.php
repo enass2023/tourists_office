@@ -14,10 +14,15 @@ $hotel_model = new app\models\HotelModel($db);
 $rating_model = new app\models\RatingModel($db);
 $city_model = new app\models\CityModel($db);
 $customer_model = new app\models\CustomerModel($db);
+$ticket_model = new app\models\TicketModel($db);
+$city_model=new app\models\CityModel($db);
+$company_model=new app\models\CompanyModel($db);
 //----------------------end of models-------------------------------//
 $hotel_controller = new app\controllers\HotelController($hotel_model,$city_model);
 $rating_controller = new app\controllers\RatingController($rating_model,$hotel_model,$customer_model);
+$ticket_controller = new app\controllers\TicketController($ticket_model,$city_model,$company_model);
 //---------------------end of controllers--------------------------//
+
 
 //add switch
 switch($_SERVER["REQUEST_URI"]){
@@ -73,6 +78,16 @@ switch($_SERVER["REQUEST_URI"]){
         $rating_controller->getMinRatedHotels();
         break;
     //----------------------done from ratings tabel select----------------------//
+    case "/ticomp": 
+        $ticket_controller-> getTicketByCompanyId();
+        break;
+    case "/gtick":
+        $ticket_controller->get();
+        break;
+        case "/ctick":
+        $ticket_controller->getTicketByCityId();
+        break;
+
 }
 
 
