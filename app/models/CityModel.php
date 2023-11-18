@@ -15,7 +15,9 @@ class CityModel{
         return $this->db->insert('citys', $data);
     }
 
-    
+    public function getById($id){
+        return $this->db->where("id",$id)->getOne("citys");
+    }
     public function deleteCity($id) {
         $this->db->where('id', $id);
         return $this->db->delete('citys');

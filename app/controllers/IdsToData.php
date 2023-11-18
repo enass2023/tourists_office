@@ -14,6 +14,9 @@ trait IdsToData{
             foreach($replaces as $id => $model){
                   $d = explode("_",$id);
                   $obj = $this->{$model}->getById($ar[$id]);
+                  if($id == "ticket_id")
+                    $ar["ticket"] = $this->getData([$obj]);
+                  else 
                   $ar[$d[0] . "_name"] = ($id == "company_id")? $obj["title"] : $obj["name"];
                   unset($ar[$id]);
             }

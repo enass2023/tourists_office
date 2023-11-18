@@ -59,7 +59,6 @@ switch($_SERVER["REQUEST_URI"]){
     case "/updaterat":
         $rating_controller->updateRate();
         break;
-    //--------done frome ratings tabel update-----------//
 }
 //get switch
 switch($_SERVER["REQUEST_URI"]){
@@ -150,6 +149,7 @@ case "/secom":
                     $customer_controller->updateCustomer();
                 break;
 //----------------------done from customer tabel select----------------------//
+
 }
 
 

@@ -8,39 +8,41 @@ class BookingModel{
         $this->db = $db;
     }    
 
-         public function getBookings() {
-             return $this->db->get('booking');
-         }
 
-    public function getBookingsById() {
-        return $this->db->where('id', $id)->getOne('booking');
+
+     public function addBookings($data){
+        return $this->db->insert("bookings",$data);
     }
 
-         public function getBookingsByHotelId() {
-             return $this->db->where('hotel_id', $id)->getOne('booking');
+         public function updateBookings($id,$data) {
+             $this->db->where('id', $id);
+             return $this->db->update('bookings', $data);   
+          }
+
+    public function deleteBookings($id) {
+        $this->db->where('id', $id);
+        return $this->db->delete('bookings');   
+     }
+//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\get///////////////////////////////
+   public function getBookings() {
+             return $this->db->get('bookings');
          }
 
-    public function getBookingsByCustomerId() {
-        return $this->db->where('customer_id', $id)->getOne('booking');
+    public function getBookingsById($id) {
+        return $this->db->where('id', $id)->getOne('bookings');
+    }
+
+         public function getBookingsByHotelId($hotel_id) {
+             return $this->db->where('hotel_id', $hotel_id)->getOne('bookings');
+         }
+
+    public function getBookingsByCustomerId($customer_id) {
+        return $this->db->where('customer_id', $customer_id)->getOne('bookings');
     }
     
-          public function getBookingsByTicketId() {
-              return $this->db->where('ticket_id', $id)->getOne('booking');
+          public function getBookingsByTicketId($ticket_id) {
+              return $this->db->where('ticket_id', $ticket_id)->getOne('bookings');
           }
-
-    public function addBookings() {
-        return $this->db->insert('booking', $data);   
-     }
-
-         public function updateBookings() {
-             $this->db->where('id', $id);
-             return $this->db->update('booking', $data);   
-          }
-
-    public function deleteBookings() {
-        $this->db->where('id', $id);
-        return $this->db->delete('booking');   
-     }
-}
+        }
 
 ?>

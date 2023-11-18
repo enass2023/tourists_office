@@ -11,7 +11,7 @@ class TicketModel{
         return $this->db->get('tickets');
     }
 
-    public function getTicketById($id) {
+    public function getById($id) {
         return $this->db->where('id', $id)->getOne('tickets');
     }
     public function getTicketByCityId($id) {
