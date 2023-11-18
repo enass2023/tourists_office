@@ -28,20 +28,20 @@ class BookingModel{
              return $this->db->get('bookings');
          }
 
-    public function getBookingsById($id) {
+    public function getById($id) {
         return $this->db->where('id', $id)->getOne('bookings');
     }
 
          public function getBookingsByHotelId($hotel_id) {
-             return $this->db->where('hotel_id', $hotel_id)->getOne('bookings');
+             return $this->db->where('hotel_id', $hotel_id)->get('bookings');
          }
 
     public function getBookingsByCustomerId($customer_id) {
-        return $this->db->where('customer_id', $customer_id)->getOne('bookings');
+        return $this->db->where('customer_id', $customer_id)->get('bookings');
     }
     
           public function getBookingsByTicketId($ticket_id) {
-              return $this->db->where('ticket_id', $ticket_id)->getOne('bookings');
+              return $this->db->where('ticket_id', $ticket_id)->get('bookings');
           }
         }
 

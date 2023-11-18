@@ -10,6 +10,7 @@ class AdmainController{
     }
     public function addAdmain(){
         if($_SERVER["REQUEST_METHOD"] == "POST"){
+            $this->testPost(["name","email","password"]);
             $data = ["name"=>$_POST["name"],"email" => $_POST["email"],"password" => $_POST["email"]];
            // echo $this->toJson($this->model->addaddAdmins($data));
           $a= $this->model->addAdmins($data);
@@ -22,6 +23,7 @@ class AdmainController{
 
 public function updateAdmain(){
     if($_SERVER["REQUEST_METHOD"] == "POST"){
+        $this->testPost(["name","email","password"]);
         $data = ["name"=>$_POST["name"],"email"=>$_POST["email"],"password"=>$_POST["password"]];
             echo $this->toJson($this->model->updateAdmins($_POST["id"],$data));
  }else
@@ -32,6 +34,7 @@ public function updateAdmain(){
 
 public function deleteAdmin(){
     if($_SERVER["REQUEST_METHOD"]=="POST"){
+        $this->testPost(["id"]);
         echo $this->tojson ($this->model->deleteAdmins($_POST["id"]));
     }else
     echo "unavailable";

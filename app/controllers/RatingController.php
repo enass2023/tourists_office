@@ -11,6 +11,7 @@ class RatingController{
     }
     public function addRate(){
         if($_SERVER["REQUEST_METHOD"] == "POST"){
+        $this->testPost(["hotel_id","customer_id","rate","comment"]);
         $data = ["hotel_id"=>$_POST["hotel_id"],"customer_id"=>$_POST["customer_id"],
                  "rate"=>$_POST["rate"], "comment"=>$_POST["comment"]];
         echo $this->toJson($this->rating_model->addRate($data));
@@ -19,13 +20,16 @@ class RatingController{
          echo "No Data To Be Add";
     }
     public function deleteRate(){
-        if($_SERVER["REQUEST_METHOD"] == "POST")
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+         $this->testPost(["id"]);
          echo $this->toJson($this->rating_model->deleteRate($_POST["id"]));
+        }
         else
          echo "No Data To Be Delete";
     }
     public function updateRate(){
         if($_SERVER["REQUEST_METHOD"] == "POST"){
+         $this->testPost(["rate","comment"]);
          $data = ["rate"=>$_POST["rate"],"comment"=>$_POST["comment"]];
          echo $this->toJson($this->rating_model->updateRate($_POST["id"],$data));
         }
@@ -39,6 +43,7 @@ class RatingController{
     }
     public function getHotelsRatingsOrdered(){
         if($_SERVER["REQUEST_METHOD"] == "POST"){
+         $this->testPost(["orederway"]);
          $data = $this->rating_model->getHotelsRatingsOrdered($_POST["orderway"]);
          $data = $this->getData($data);
          echo $this->toJson($data);
@@ -48,6 +53,7 @@ class RatingController{
     }
     public function getCustomerRatingsOrdered(){
         if($_SERVER["REQUEST_METHOD"] == "POST"){
+           $this->testPost(["customer_id","orderway"]);
            $data = $this->rating_model->getCustomerRatingsOrdered($_POST["customer_id"],$_POST["orderway"]);
            $data = $this->getData($data);
            echo $this->toJson($data);

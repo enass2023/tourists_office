@@ -9,6 +9,7 @@ class CityController{
     
         public function addCity(){
         if($_SERVER["REQUEST_METHOD"]== "POST"){
+         $this->testPost(["name","country"]);
          $data=["name"=>$_POST["name"],"country"=>$_POST["country"]];
            echo $this->toJson ($this->model->addCity($data));
         }else
@@ -17,6 +18,7 @@ class CityController{
     }
     public function deleteCity(){
         if($_SERVER["REQUEST_METHOD"]=="POST"){
+            $this->testPost(["id"]);
             echo $this->toJson($this->model->deleteCity($_POST["id"]));
            
         }else

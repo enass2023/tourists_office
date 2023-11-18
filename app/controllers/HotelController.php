@@ -10,6 +10,7 @@ class HotelController{
     }
     public function addHotel(){
         if($_SERVER["REQUEST_METHOD"] == "POST"){
+         $this->testPost(["name","city_id"]);
          $data = ["name"=>$_POST["name"],"city_id" => $_POST["city_id"]];
          echo $this->toJson($this->hotel_model->addHotel($data));
         }
@@ -17,8 +18,10 @@ class HotelController{
          echo "No Data To Be Add";
     }
     public function deleteHotel(){
-        if($_SERVER["REQUEST_METHOD"] == "POST")
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+         $this->testPost(["id"]);
          echo $this->toJson($this->hotel_model->deleteHotel($_POST["id"]));
+        }
         else 
          echo "No Data To Be Delete";
     }
@@ -29,6 +32,7 @@ class HotelController{
     }
     public function getAllHotelsInCity(){
         if($_SERVER["REQUEST_METHOD"] == "POST"){
+        $this->testPost(["city_id"]);
         $data = $this->hotel_model->getAllHotelsInCity($_POST["city_id"]);
         $data = $this->getData($data);
         echo $this->toJson($data);

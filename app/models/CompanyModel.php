@@ -19,11 +19,6 @@ class CompanyModel {
         return $this->db->where('id', $id)->getOne('companys');
     }
 
-    public function updateCompany($id, $data) {
-        $this->db->where('id', $id);
-        return $this->db->update('companys', $data);
-    }
-
     public function deleteCompany($id) {
         $this->db->where('id', $id);
         return $this->db->delete('companys');
