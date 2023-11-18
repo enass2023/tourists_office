@@ -1,5 +1,5 @@
 <?php
-namespace app\models ;
+namespace app\models;
 
 class CustomerModel{
     private $db;
@@ -8,20 +8,20 @@ class CustomerModel{
         $this->db = $db ;
     }
 
-    public function get_costomer(){
+    public function getCustomer(){
         return $this->db->get('customers');
     }
 
-    public function add_costomer(){
+    public function addCustomer($data){
         return $this->db->insert('customers', $data);
     }    
 
-    public function update_coustomer(){
+    public function updateCustomer($id, $data){
         $this->db->where('id', $id);
         return $this->db->update('customers', $data);
     }    
 
-    public function delete_coustomer(){
+    public function deleteCustomer($id){
         $this->db->where('id', $id);
         return $this->db->delete('customers');
     }    

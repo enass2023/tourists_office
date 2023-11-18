@@ -19,12 +19,16 @@ $city_model=new app\models\CityModel($db);
 $company_model=new app\models\CompanyModel($db);
 $admin_model=new app\models\AdminModel($db);
 $city_model=new app\models\CityModel($db);
+$company_model = new app\models\CompanyModel($db);
+$customer_model = new app\models\CustomerModel($db);
 //----------------------end of models-------------------------------//
 $hotel_controller = new app\controllers\HotelController($hotel_model,$city_model);
 $rating_controller = new app\controllers\RatingController($rating_model,$hotel_model,$customer_model);
 $ticket_controller = new app\controllers\TicketController($ticket_model,$city_model,$company_model);
 $admin_controller=new app\controllers\AdmainController($admin_model);
 $city_controller=new  app\controllers\CityController($city_model);
+$company_controller = new app\controllers\CompanyController($company_model);
+$customer_controller = new app\controllers\CustomerController($customer_model);
 //---------------------end of controllers--------------------------//
 
 
@@ -116,7 +120,37 @@ $city_controller->searchCity();
 break;
 
 //----------------------done from city tabel select----------------------//
+case "/secom":
+    $company_controller->getCompany();
+    break;
+    case "/addcom":
+        $company_controller->addCompany();
+        break;
+        case "/decom":
+            $company_controller->deleteCompany();
+            break;
+            case "/upcom":
+                $company_controller->updateCompany();
+                break;
 
+//----------------------done from company tabel select----------------------//
 
+        case "/seeallcus":
+        $customer_controller->getCustomer();
+        break;  
+
+        case "/adcus":
+            $customer_controller->addCustomer();
+            break;  
+
+            case "/deCus":
+                $customer_controller->deleteCustomer();
+                break;  
+                case "/upCus":
+                    $customer_controller->updateCustomer();
+                break;
+//----------------------done from customer tabel select----------------------//
 }
+
+
 ?>
