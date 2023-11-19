@@ -3,6 +3,7 @@ spl_autoload_register(function ($class){
     require "./$class.php";
 });
 require_once "./lib/DB/MysqliDb.php";
+require_once "./config/BaseUrl.php";
 $config = require './config/config.php';
 $db = new MysqliDb(
     $config['db_host'],
@@ -29,7 +30,7 @@ $customer_controller = new app\controllers\CustomerController($customer_model);
 $booking_controller = new app\controllers\BookingController($booking_model,$ticket_model,$customer_model,$hotel_model,$company_model,$city_model);
 //---------------------end of controllers--------------------------//
 
-define("BASE_URL","/");
+define("BASE_URL",$url);
 //add switch
 switch($_SERVER["REQUEST_URI"]){
     case BASE_URL . "addhot":
