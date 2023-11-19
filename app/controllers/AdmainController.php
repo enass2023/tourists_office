@@ -46,6 +46,25 @@ public function gitAllAdmain(){
    
 }
 
+public function login(){
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+ if($data=$this->model->gitAdminByemailpassword($_POST["email"],$_POST["password"]))
+ {var_dump($data);
+$c=rand();
+$admin_data=[
+'name'=>$data['name'],
+'email'=>$data['email'],
+'password'=>$data['password'],
+'card'=>$c];
+$this->model->updateAdmins($data["id"],$admin_data);
+ }
+else{echo"failed";}
+
+ }
+
+
+}
+
 
 }
 ?>

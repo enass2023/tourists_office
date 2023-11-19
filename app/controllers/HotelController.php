@@ -3,10 +3,11 @@ namespace app\controllers;
 class HotelController{
     use MakeItJson;
     use IdsToData;
-    private $hotel_model,$city_model;
-    public function __construct($hotel_model,$city_model){
+    private $hotel_model,$city_model,$admin_model;
+    public function __construct($hotel_model,$city_model,$admin_model){
         $this->hotel_model = $hotel_model;
         $this->city_model = $city_model;
+        $this->admin_model =$admin_model;
     }
     public function addHotel(){
         if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -26,9 +27,18 @@ class HotelController{
          echo "No Data To Be Delete";
     }
     public function getAllHotels(){
+    $card=getallheaders()["c"];
+     if($this->admin_model->gitAdminBycard($card))
+     {
+
         $data = $this->hotel_model->getAllHotels();
         $data = $this->getData($data);
         echo $this->toJson($data);
+     }
+
+else{echo"not found";}
+
+
     }
     public function getAllHotelsInCity(){
         if($_SERVER["REQUEST_METHOD"] == "POST"){

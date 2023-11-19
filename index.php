@@ -3,6 +3,7 @@ spl_autoload_register(function ($class){
     require "./$class.php";
 });
 require_once "./lib/DB/MysqliDb.php";
+require_once "./config/BaseUrl.php";
 $config = require './config/config.php';
 $db = new MysqliDb(
     $config['db_host'],
@@ -19,7 +20,7 @@ $company_model=new app\models\CompanyModel($db);
 $admin_model=new app\models\AdminModel($db);
 $booking_model = new  app\models\BookingModel($db);
 //----------------------end of models-------------------------------//
-$hotel_controller = new app\controllers\HotelController($hotel_model,$city_model);
+$hotel_controller = new app\controllers\HotelController($hotel_model,$city_model,$admin_model);
 $rating_controller = new app\controllers\RatingController($rating_model,$hotel_model,$customer_model);
 $ticket_controller = new app\controllers\TicketController($ticket_model,$city_model,$company_model);
 $admin_controller=new app\controllers\AdmainController($admin_model);
@@ -29,7 +30,7 @@ $customer_controller = new app\controllers\CustomerController($customer_model);
 $booking_controller = new app\controllers\BookingController($booking_model,$ticket_model,$customer_model,$hotel_model,$company_model,$city_model);
 //---------------------end of controllers--------------------------//
 
-define("BASE_URL","/");
+define("BASE_URL",$BaseUrl);
 //add switch
 switch($_SERVER["REQUEST_URI"]){
     case BASE_URL . "addhot":
@@ -149,7 +150,8 @@ switch($_SERVER["REQUEST_URI"]){
         $ticket_controller-> getTicketByCompanyId();
         break;
     case BASE_URL . "gtick":
-        $ticket_controller->get();
+
+     $ticket_controller->get();
         break;
         case BASE_URL . "ctick":
         $ticket_controller->getTicketByCityId();
@@ -186,6 +188,14 @@ switch($_SERVER["REQUEST_URI"]){
         $booking_controller->getBookingByHotelId();
          break;  
 //-------------------------------------------The End--------------------------------------------//
+case BASE_URL . "lo":
+    $admin_controller->login();
+     break;
+
+
+
+
+
 }
 
 

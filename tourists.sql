@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 15, 2023 at 09:45 AM
+-- Generation Time: Nov 19, 2023 at 07:54 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.19
 
@@ -31,19 +31,20 @@ CREATE TABLE `admins` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL
+  `password` varchar(100) NOT NULL,
+  `card` varchar(56) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `admins`
 --
 
-INSERT INTO `admins` (`id`, `name`, `email`, `password`) VALUES
-(1, 'rafat', 'rafat@gmail.com', '0934534'),
-(2, 'enas', 'enas@gmail.com', '123123'),
-(3, 'abdallah', 'abdallah@gmail.com', '123123'),
-(4, 'rama', 'ram@gmail.com', '2323'),
-(5, 'osama', 'osama@gmail.com', '2424');
+INSERT INTO `admins` (`id`, `name`, `email`, `password`, `card`) VALUES
+(1, 'rafat', 'rafat@gmail.com', '0934534', '814789440'),
+(2, 'alaa', 'alaa@gmail.com', '21223334', ''),
+(4, 'rama', 'ram@gmail.com', '2323', ''),
+(5, 'osama', 'osama@gmail.com', '2424', ''),
+(6, 'omar', 'sdd@skskss', '78343833', '');
 
 -- --------------------------------------------------------
 
@@ -64,8 +65,7 @@ CREATE TABLE `bookings` (
 --
 
 INSERT INTO `bookings` (`id`, `ticket_id`, `customer_id`, `hotel_id`, `book_date`) VALUES
-(1, 2, 3, 9, '2023-11-20'),
-(2, 2, 4, 8, '2023-11-27');
+(1, 2, 3, 7, '2023-11-27');
 
 -- --------------------------------------------------------
 
@@ -87,7 +87,9 @@ INSERT INTO `citys` (`id`, `name`, `country`) VALUES
 (1, 'homs', 'syria'),
 (3, 'Dubai', 'UAE'),
 (4, 'Riyad', 'Saudi'),
-(5, 'sharjah', 'UAE');
+(5, 'sharjah', 'UAE'),
+(6, 'damascus', 'syria'),
+(7, 'aaaaa', 'syria');
 
 -- --------------------------------------------------------
 
@@ -109,7 +111,7 @@ CREATE TABLE `companys` (
 INSERT INTO `companys` (`id`, `title`, `address`, `phone`) VALUES
 (1, 'shamwings', 'Damscus-syria', '09394834'),
 (2, 'SyrianAir', 'Damascus-syria', '098888'),
-(3, 'Damavia', 'Damascus', '09288212');
+(3, 'Damavia', 'Damascus', '0934343');
 
 -- --------------------------------------------------------
 
@@ -133,7 +135,8 @@ INSERT INTO `customers` (`id`, `name`, `mobile`, `gender`, `email`) VALUES
 (1, 'enas', '09994', 'female', 'enas.mo@gmail.com'),
 (2, 'lana', '049343', 'female', 'lala.eme@gmail.com'),
 (3, 'osama', '093333', 'male', 'osama@gmail.com'),
-(4, 'Rama', '0932382', 'female', 'rama@gmail.com');
+(4, 'sese', '09281283', 'femalr', 'sese@gmail.com'),
+(5, 'mazen', '09232882', 'male', 'wkjskjsk@sjsjjsjss');
 
 -- --------------------------------------------------------
 
@@ -198,7 +201,7 @@ CREATE TABLE `ratings` (
 
 INSERT INTO `ratings` (`id`, `hotel_id`, `customer_id`, `rate`, `comment`) VALUES
 (1, 8, 1, '7', 'very nice'),
-(2, 6, 1, '5', 'good'),
+(2, 6, 1, '5', 'nice'),
 (3, 9, 2, '9', 'beautiful');
 
 -- --------------------------------------------------------
@@ -221,8 +224,7 @@ CREATE TABLE `tickets` (
 
 INSERT INTO `tickets` (`id`, `company_id`, `city_id`, `date_s`, `date_e`) VALUES
 (1, 1, 4, '2023-11-30', '2023-11-30'),
-(2, 2, 3, '2023-11-22', '2023-11-22'),
-(3, 2, 5, '2023-11-21', '2023-11-29');
+(2, 2, 3, '2023-11-22', '2023-11-22');
 
 --
 -- Indexes for dumped tables
@@ -299,19 +301,19 @@ ALTER TABLE `tickets`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `citys`
 --
 ALTER TABLE `citys`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `companys`
@@ -323,7 +325,7 @@ ALTER TABLE `companys`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `hotels`
@@ -341,7 +343,7 @@ ALTER TABLE `ratings`
 -- AUTO_INCREMENT for table `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

@@ -26,6 +26,15 @@ class AdminModel{
         $this->db->where('id', $id);
         return $this->db->delete('admins');
     }
+    public function gitAdminByemailpassword($email,$password){
+        return $this->db->where('email', $email)->where('password',$password)->getone('admins');
+
+}
+public function gitAdminBycard($card){
+    return $this->db->where('card', $card)->getone('admins');
+
+}
+
 
 
 }
