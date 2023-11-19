@@ -47,7 +47,7 @@ public function getTicketByCompanyId(){
 
 public function getTicketByDate($date_s){
 
-    $p= $this->model->getTicketDate($data_s);
+    $p= $this->ticket_model->getTicketDate($data_s);
     $p=$this->getData($p);
     echo $this->toJson($p);
 
@@ -57,13 +57,13 @@ public function addTicket(){
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $this->testPost(["company_id","city_id","date_s","date_e"]);
         $data = ["company_id"=>$_POST["company_id"],"city_id"=>$_POST["city_id"],"date_s"=>$_POST["date_s"],"date_e"=>$_POST["date_e"]];
-        echo $this->toJson($this->model->addTicket($data));
+        echo $this->toJson($this->ticket_model->addTicket($data));
     }
 }
 public function deleteTicket(){
     if($_SERVER["REQUEST_METHOD"] == "POST"){
     $this->testPost(["id"]);
-    $this->model->deleteTicket($_POST["id"]);
+    echo $this->toJson($this->ticket_model->deleteTicket($_POST["id"]));
     }
 }
 }
