@@ -45,7 +45,38 @@ public function gitAllAdmain(){
     echo $this->toJson ($this->model->getAdmins());
    
 }
+public function login(){
+if(isset(getallheaders()['c']) && $this->model->gitAdminBycard(getallheaders()['c']))
+     return;
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+ $this->testPost(["email","password"]);
+ if($data=$this->model->gitAdminByemailpassword($_POST["email"],$_POST["password"]))
+ {
+$c=rand();
+$admin_data=[
+'name'=>$data['name'],
+'email'=>$data['email'],
+'password'=>$data['password'],
+'card'=>$c];
+$this->model->updateAdmins($data["id"],$admin_data);
+echo $this->toJson($c);
+ }
+else{die("failed");}
 
+ }
+else
+ die("you need to loging enter the email and password");
 
+}
+public function logout(){
+    $data = $this->model->gitAdminBycard(getallheaders()['c']);
+    $admin_data=[
+        'name'=>$data['name'],
+        'email'=>$data['email'],
+        'password'=>$data['password'],
+        'card'=>null];
+    $this->model->updateAdmins($data["id"],$admin_data);
+    echo "loged out";
+}
 }
 ?>
