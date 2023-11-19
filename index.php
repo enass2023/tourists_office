@@ -29,7 +29,7 @@ $company_controller = new app\controllers\CompanyController($company_model);
 $customer_controller = new app\controllers\CustomerController($customer_model);
 $booking_controller = new app\controllers\BookingController($booking_model,$ticket_model,$customer_model,$hotel_model,$company_model,$city_model);
 //---------------------end of controllers--------------------------//
-
+$admin_controller->login();
 define("BASE_URL",$url);
 //add switch
 switch($_SERVER["REQUEST_URI"]){
@@ -114,6 +114,9 @@ switch($_SERVER["REQUEST_URI"]){
     case BASE_URL . "updmi":
         $admin_controller->updateAdmain();
         break; 
+    case BASE_URL . "logout" : 
+        $admin_controller->logout();
+        break;
     //-------------done from admin table update-----------//
     case BASE_URL . "upCus":
         $customer_controller->updateCustomer();
