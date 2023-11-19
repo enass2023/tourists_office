@@ -29,92 +29,92 @@ $customer_controller = new app\controllers\CustomerController($customer_model);
 $booking_controller = new app\controllers\BookingController($booking_model,$ticket_model,$customer_model,$hotel_model,$company_model,$city_model);
 //---------------------end of controllers--------------------------//
 
-
+define("BASE_URL","/");
 //add switch
 switch($_SERVER["REQUEST_URI"]){
-    case "/addhot":
+    case BASE_URL . "addhot":
         $hotel_controller->addHotel();
         break;
     //-----------done from hotels table add--------//
-    case "/addrat":
+    case BASE_URL . "addrat":
         $rating_controller->addRate();
         break;
     //-----------done from ratings table add-------//
-    case "/addbooking":
+    case BASE_URL . "addbooking":
         $booking_controller->addbooking();
         break;
     //-----------done from booking table add-------//
-    case "/ddmi":
+    case BASE_URL . "ddmi":
         $admin_controller->addAdmain();
         break;
     //-----------done from admin table add---------//
-    case "/addcom":
+    case BASE_URL . "addcom":
         $company_controller->addCompany();
         break;
     //-----------done from company table add-----------//
-    case "/adcus":
+    case BASE_URL . "adcus":
         $customer_controller->addCustomer();
         break;  
     //--------done from customer table add------------//
-    case "/adcit":
+    case BASE_URL . "adcit":
         $city_controller->addCity();
         break;
     //----------done from city table add--------------//
-    case "/adtick":
+    case BASE_URL . "adtick":
         $ticket_controller->addTicket();
         break;
 }
 
 //delete switch
 switch($_SERVER["REQUEST_URI"]){
-    case "/deletehot":
+    case BASE_URL . "deletehot":
         $hotel_controller->deleteHotel();
         break;
     //---------done from hotels tabel delete-------//
-    case "/deleterat":
+    case BASE_URL . "deleterat":
         $rating_controller->deleteRate();
         break;
     //---------done from ratings table delete------//
-    case "/deletebooking":
+    case BASE_URL . "deletebooking":
         $booking_controller->deleteBooking();
         break;
     //---------done from ratings table delete------//
-    case "/dedmi":
+    case BASE_URL . "dedmi":
         $admin_controller->deleteAdmin();
           break;
     //---------done from admin table delete--------//
-    case"/dcit":
+    case BASE_URL . "dcit":
         $city_controller->deleteCity();
         break;
     //--------done from city table delete---------//
-    case "/decom":
+    case BASE_URL . "decom":
         $company_controller->deleteCompany();
         break;
     //-------done from company table delete------//
-    case "/deCus":
+    case BASE_URL . "deCus":
         $customer_controller->deleteCustomer();
         break; 
     //------done from customer table delete-------//
-    case "/deltick":
+    case BASE_URL . "deltick":
         $ticket_controller->deleteTicket();
         break;
 }
 
 //update switch
 switch($_SERVER["REQUEST_URI"]){
-    case "/updaterat":
+    case BASE_URL . "updaterat":
         $rating_controller->updateRate();
         break;
     //---------done from ratings table update------//    
-    case "/updatebooking":
+    case BASE_URL . "updatebooking":
          $booking_controller->updateBooking();
          break;
     //-------------done from booking table update-------//   
-    case"/updmi":
+    case BASE_URL . "updmi":
         $admin_controller->updateAdmain();
         break; 
     //-------------done from admin table update-----------//
-    case "/upCus":
+    case BASE_URL . "upCus":
         $customer_controller->updateCustomer();
         break;
     //-------------done from customer table update--------//
@@ -122,67 +122,67 @@ switch($_SERVER["REQUEST_URI"]){
 
 //get switch
 switch($_SERVER["REQUEST_URI"]){
-    case "/seeallhot":
+    case BASE_URL . "seeallhot":
         $hotel_controller->getAllHotels();
         break;
-    case "/seecithot": 
+    case BASE_URL . "seecithot": 
         $hotel_controller->getAllHotelsInCity();
         break;
     //-------------------done from hotels tabel select-------------------//
-    case "/seeallrat":
+    case BASE_URL . "seeallrat":
         $rating_controller->getAllRatings();
         break;
-    case "/seehotratord":
+    case BASE_URL . "seehotratord":
         $rating_controller->getHotelsRatingsOrdered();
         break;
-    case "/seecustratord":
+    case BASE_URL . "seecustratord":
         $rating_controller->getCustomerRatingsOrdered();
         break;
-    case "/mxrathot":
+    case BASE_URL . "mxrathot":
         $rating_controller->getMaxRatedHotels();
         break;
-    case "/mnrathot": 
+    case BASE_URL . "mnrathot": 
         $rating_controller->getMinRatedHotels();
         break;
     //----------------------done from ratings tabel select----------------------//
-    case "/ticomp": 
+    case BASE_URL . "ticomp": 
         $ticket_controller-> getTicketByCompanyId();
         break;
-    case "/gtick":
+    case BASE_URL . "gtick":
         $ticket_controller->get();
         break;
-        case "/ctick":
+        case BASE_URL . "ctick":
         $ticket_controller->getTicketByCityId();
         break;
 //----------------------done from ticket tabel select----------------------//
-    case"/gdmi":
+    case BASE_URL . "gdmi":
         $admin_controller->gitAllAdmain();
         break;
 //----------------------done from admin tabel select----------------------//
-    case"/gcit":
+    case BASE_URL . "gcit":
         $city_controller->gitAllCity();
         break;
 //----------------------done from city tabel select----------------------//
-    case "/secom":
+    case BASE_URL . "secom":
         $company_controller->getCompany();
         break;
 //----------------------done from company tabel select----------------------//
-    case "/seeallcus":
+    case BASE_URL . "seeallcus":
         $customer_controller->getCustomer();
         break;   
 //----------------------done from customer tabel select----------------------//
-    case "/getallbooking":
+    case BASE_URL . "getallbooking":
         $booking_controller->getallbooking();
         break;  
-    case "/getbookingbyticket":
+    case BASE_URL . "getbookingbyticket":
         $booking_controller->getBookingByTicketId();
         break;  
 
-     case "/getbookingbycustomer":
+     case BASE_URL . "getbookingbycustomer":
          $booking_controller->getBookingByCustomerId();
          break;  
 
-     case "/getbookingbyhotel":
+     case BASE_URL . "getbookingbyhotel":
         $booking_controller->getBookingByHotelId();
          break;  
 //-------------------------------------------The End--------------------------------------------//
