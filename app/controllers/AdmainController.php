@@ -11,7 +11,7 @@ class AdmainController{
     public function addAdmain(){
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $this->testPost(["name","email","password"]);
-            $data = ["name"=>$_POST["name"],"email" => $_POST["email"],"password" => $_POST["email"]];
+            $data = ["name"=>$_POST["name"],"email" => $_POST["email"],"password" => $_POST["password"]];
            // echo $this->toJson($this->model->addaddAdmins($data));
           $a= $this->model->addAdmins($data);
           echo json_encode($a);
