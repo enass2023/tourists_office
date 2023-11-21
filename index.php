@@ -190,6 +190,12 @@ switch($_SERVER["REQUEST_URI"]){
         $booking_controller->getBookingByHotelId();
          break;  
 //-------------------------------------------The End--------------------------------------------//
+
+case BASE_URL . "lout":
+    $admin_controller->logout();
+     break;  
+
+
 }
 
 

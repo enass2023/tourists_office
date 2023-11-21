@@ -46,6 +46,7 @@ public function gitAllAdmain(){
    
 }
 public function login(){
+    
 if(isset(getallheaders()['c']) && $this->model->gitAdminBycard(getallheaders()['c']))
      return;
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -70,12 +71,15 @@ else
 }
 public function logout(){
     $data = $this->model->gitAdminBycard(getallheaders()['c']);
+    
     $admin_data=[
         'name'=>$data['name'],
         'email'=>$data['email'],
         'password'=>$data['password'],
-        'card'=>null];
-    $this->model->updateAdmins($data["id"],$admin_data);
+        'card'=>""];
+    
+        $s=$this->model->updateAdmins($data["id"],$admin_data);
+   var_dump($s);
     echo "loged out";
 }
 }
